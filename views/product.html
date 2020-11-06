@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+* {
+                box-sizing: border-box;
+            }
+
+            div 
+            {
+                padding: 5px 0px;
+                font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+            }
+            a {
+                color: white;
+            }
+
+            #logo 
+            {
+                background-color: black;
+                color: white;
+                padding: 50px;
+                font-weight: bolder;
+                font-size: 50px;
+            }
+
+            #menu {
+                background-color: gray;
+                color:white;
+                font-size: 20px;
+                font-weight: bold;
+            }
+
+            #main-content 
+            {
+                background-color: black;
+                color: white;
+                padding: 300px;
+            }
+
+            #main-content::after {
+                content: "";
+                clear: both;
+                display: table;
+            }
+        
+            #footer {
+                background-color: black;
+                color: white;
+            }
+
+            ul 
+            {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color:black;
+            }
+
+            li 
+            {
+            float: left;
+            }
+
+            li a 
+            {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            }
+
+            li a:hover 
+            {
+            background-color:grey;
+            } 
+            img 
+            {
+                max-width: 50%;
+                max-height: 50%;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div id="logo" href="index.html">ATN Shop</div>
+
+        <div id="menu">
+            <ul>
+                <li><a class="active" href="/">Home</a></li>
+                <li><a href="/product">Product</a></li>
+                <li><a href="/payment">Payment</a></li>
+            </ul>
+        </div>
+
+        <div id="main-content">
+            {% for product in products %}
+
+            <form method='get' action='/product/add_to_cart/{{product.ID}}'>
+                <p> {{product.ID}}</p>
+                <p> {{product.productName}}</p>
+                <p> {{product.productPrice}}</p>
+                <img src='{{product.img}}'>
+
+                <button type='submit'>Add to cart</button>
+            </form>
+            {% endfor %}
+        </div>
+
+    </body>
+</html>
